@@ -5,19 +5,19 @@ beat lands on the page, is the host's work. This page is the contract.
 
 ## The stylesheet's hooks
 
-| Hook                | Meaning                                                                                                                    |
-| ------------------- | -------------------------------------------------------------------------------------------------------------------------- |
-| `.sl-wrap`          | Wrapper. `font-size: calc(1em * var(--sl-scale))`, `line-height: 1.9`.                                                     |
-| `--sl-scale`        | Optical bump over surrounding text (default `1.08`). Multiply it back in if you override the wrapper's font-size.          |
-| `.sl-bold`          | Bold weight (700). Normal weight is 500.                                                                                   |
-| `--font-sl`         | Letter face per script. Defaults to the Noto Sans script faces; the CSS does not fetch fonts.                              |
-| `.sl-n`             | A note. `noteClass` (below) adds to it.                                                                                    |
-| `.sl-mz`, `.sl-mbr` | Meend and ghaseet mark zones. A cross-beat span is bridged between consecutive zones by `swarlipi/bridge`.                 |
-| `[data-sl-bar]`     | A bridging bar. Positioned by the stylesheet: absolute, and anchor-pinned to its zones where the engine supports anchors.  |
-| `--sl-mz-h`         | Mark-zone height (`0.34em`). `--sl-bar` multiplies it, so `.sl-mz` must keep taking its height from this variable.         |
-| `--sl-bar-ratio`    | Fraction of the zone its bar fills. Mirrors `MEEND_BAR_RATIO`; a test fails if the two drift. Use it, do not re-derive it. |
-| `--sl-bar`          | Resulting stroke weight, and the ghaseet bracket's border width.                                                           |
-| `--sl-mbr-leg`      | Ghaseet bracket leg length below the bar.                                                                                  |
+| Hook             | Meaning                                                                                                                             |
+| ---------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
+| `.sl-wrap`       | Wrapper. `font-size: calc(1em * var(--sl-scale))`, `line-height: 1.9`.                                                              |
+| `--sl-scale`     | Optical bump over surrounding text (default `1.08`). Multiply it back in if you override the wrapper's font-size.                   |
+| `.sl-bold`       | Bold weight (700). Normal weight is 500.                                                                                            |
+| `--font-sl`      | Letter face per script. Defaults to the Noto Sans script faces; the CSS does not fetch fonts.                                       |
+| `.sl-n`          | A note. `noteClass` (below) adds to it.                                                                                             |
+| `.sl-mz`         | Meend and ghaseet mark zones (`.sl-mz-g` for ghaseet). A cross-beat span is bridged between consecutive zones by `swarlipi/bridge`. |
+| `[data-sl-bar]`  | A bridging bar. Positioned by the stylesheet: absolute, and anchor-pinned to its zones where the engine supports anchors.           |
+| `--sl-mz-h`      | Mark-zone height (`0.34em`). `--sl-bar` multiplies it, so `.sl-mz` must keep taking its height from this variable.                  |
+| `--sl-bar-ratio` | Fraction of the zone its bar fills. Mirrors `MEEND_BAR_RATIO`; a test fails if the two drift. Use it, do not re-derive it.          |
+| `--sl-bar`       | Resulting stroke weight, and the width of the ghaseet bracket's legs.                                                               |
+| `--sl-mbr-leg`   | Ghaseet bracket leg length below the bar.                                                                                           |
 
 **Derived, do not set:** `--sl-mbr-top` follows the script's dot line minus
 the W tick's reach. Every meend sits at one height per script, ticked or not,

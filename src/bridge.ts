@@ -3,8 +3,8 @@
  *
  * The renderer draws one beat at a time: an opening hook where a glide leaves
  * a note, a bar through a beat it passes, a closing hook where it arrives.
- * Each fragment is a real element — a `.sl-mz` mark zone or a `.sl-mbr`
- * bracket — so joining them is element-anchored: consecutive zones along a
+ * Each fragment is a real element — a `.sl-mz` mark zone, ghaseet included —
+ * so joining them is element-anchored: consecutive zones along a
  * span are bridged pair by pair at the fragment-bar height. This module
  * measures those bridges; the host owns the beat cells, the spans (which
  * beats pair is the host's rule, not the renderer's) and when to
@@ -100,33 +100,13 @@ export interface MeasureBridgesOptions {
 }
 
 /** Selector for the fragment elements a bridge joins. */
-export const BRIDGE_ZONE_SELECTOR = '.sl-mz, .sl-mbr';
+export const BRIDGE_ZONE_SELECTOR = '.sl-mz';
 
 /** Both ends run this many zone-heights INTO their zones: the piece bars end
     in chamfered path corners, and a bar that merely touches them prints as a
     dashed seam at every junction. The stylesheet's `--sl-bar-overlap` mirrors
     it for the anchor rules (a test fails if the two drift). */
 export const BRIDGE_OVERLAP = 0.35;
-
-// Ink height as a fraction of the zone's box — SCALE-FREE on purpose. The
-// anchor rules re-derive the box at print layout with no JS, so a ratio
-// measured in screen pixels would be re-applied to a differently sized box
-// and print the connector at the wrong weight.
-//
-// A mark zone's bar is MEEND_BAR_RATIO of its frame, straight from the
-// renderer. A ghaseet's is its bracket's border over its own box, computed
-// from the same em variables the stylesheet uses rather than from the
-// rendered border width — the browser floors that to a whole device pixel,
-// which is precisely the screen-only number that must not be baked in.
-function slabRatioOf(zone: HTMLElement): number {
-  if (zone.classList.contains('sl-mz')) return MEEND_BAR_RATIO;
-  const css = getComputedStyle(zone);
-  const em = (name: string) =>
-    Number.parseFloat(css.getPropertyValue(name)) || 0;
-  const bar = em('--sl-mz-h') * em('--sl-bar-ratio');
-  const box = em('--sl-mbr-leg') + bar;
-  return box > 0 ? bar / box : MEEND_BAR_RATIO;
-}
 
 interface XAnchor {
   pct: number;
@@ -272,7 +252,8 @@ export function measureBridges({
           name,
           rect: el.getBoundingClientRect(),
           cellRect,
-          slabRatio: slabRatioOf(el),
+          // Scale-free, so the anchor rules re-derive it at print layout.
+          slabRatio: MEEND_BAR_RATIO,
         };
       }
     );

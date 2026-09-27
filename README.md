@@ -75,18 +75,18 @@ aliases, and their `.sl-` classes are still emitted, so no migration is needed.
 
 ### Contract (things an integrator may touch)
 
-| Hook                | Meaning                                                                                                                     |
-| ------------------- | --------------------------------------------------------------------------------------------------------------------------- |
-| `.sl-wrap`          | Wrapper. `font-size: calc(1em * var(--sl-scale))`, `line-height: 1.9`.                                                      |
-| `--sl-scale`        | Optical bump vs. surrounding text (default `1.08`). Multiply it back in if you override the wrapper's font-size.            |
-| `.sl-bold`          | Bold weight (700). Normal weight is 500.                                                                                    |
-| `--font-sl`         | Letter face per script (defaults to the Noto Sans script faces; the CSS does **not** fetch fonts — load them yourself).     |
-| `.sl-mz`, `.sl-mbr` | Meend / ghaseet mark zones. A cross-beat span is bridged between consecutive zones by `swarlipi/bridge`.                    |
-| `[data-sl-bar]`     | A bridging bar. Positioned by the stylesheet: absolute, and anchor-pinned to its zones where the engine supports anchors.   |
-| `--sl-mz-h`         | Mark-zone height (`0.34em`). `--sl-bar` multiplies it, so `.sl-mz` must keep taking its height from this variable.          |
-| `--sl-bar-ratio`    | Fraction of the zone its bar fills. Mirrors `MEEND_BAR_RATIO` — a test fails if the two drift. Use it, do not re-derive it. |
-| `--sl-bar`          | Resulting stroke weight, and the ghaseet bracket's border width.                                                            |
-| `--sl-mbr-leg`      | Ghaseet bracket leg length below the bar. Its box is `leg + bar`, so a heavier bar thickens ink without shortening legs.    |
+| Hook             | Meaning                                                                                                                           |
+| ---------------- | --------------------------------------------------------------------------------------------------------------------------------- |
+| `.sl-wrap`       | Wrapper. `font-size: calc(1em * var(--sl-scale))`, `line-height: 1.9`.                                                            |
+| `--sl-scale`     | Optical bump vs. surrounding text (default `1.08`). Multiply it back in if you override the wrapper's font-size.                  |
+| `.sl-bold`       | Bold weight (700). Normal weight is 500.                                                                                          |
+| `--font-sl`      | Letter face per script (defaults to the Noto Sans script faces; the CSS does **not** fetch fonts — load them yourself).           |
+| `.sl-mz`         | Meend / ghaseet mark zones (`.sl-mz-g` for ghaseet). A cross-beat span is bridged between consecutive zones by `swarlipi/bridge`. |
+| `[data-sl-bar]`  | A bridging bar. Positioned by the stylesheet: absolute, and anchor-pinned to its zones where the engine supports anchors.         |
+| `--sl-mz-h`      | Mark-zone height (`0.34em`). `--sl-bar` multiplies it, so `.sl-mz` must keep taking its height from this variable.                |
+| `--sl-bar-ratio` | Fraction of the zone its bar fills. Mirrors `MEEND_BAR_RATIO` — a test fails if the two drift. Use it, do not re-derive it.       |
+| `--sl-bar`       | Resulting stroke weight, and the width of the ghaseet bracket's legs.                                                             |
+| `--sl-mbr-leg`   | Ghaseet leg length below the bar. A leg is `leg + bar` tall, so a heavier bar thickens ink without shortening legs.               |
 
 **Derived, do not set:** `--sl-mbr-top` is computed from that script's
 `--sl-dot-a-top` minus the W tick's reach (`--sl-tick-reach`, itself the sum of

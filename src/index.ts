@@ -521,8 +521,8 @@ function arcSvg(count: number): string {
 // Meend marks are the q / e / w outlines, drawn in one shared vertical frame
 // (so the hook-vs-bar proportions stay true) and normalized to 100×12 boxes. The hooks render at
 // a fixed em size; only the connecting bar stretches — so the rounded curl
-// never distorts at any span width. Ghaseet uses square bracket pieces
-// (bordered elements) instead of the rounded hooks.
+// never distorts at any span width. Ghaseet is the same zone with square legs
+// in place of the rounded hooks (see ghaseetZone).
 const MK_Q_PATH =
   'M100.0 0.19V4.4L99.31 4.5Q62.84 4.5 40.69 5.6Q23.22 6.4 15.17 9.4Q12.95 12.0 11.72 12.0H0.69' +
   'L0.0 11.91Q0.0 8.73 15.17 5.76Q50.19 0.0 97.93 0.0Q100.0 0.0 100.0 0.19Z';
@@ -553,6 +553,27 @@ function meendZone(left: boolean, right: boolean): string {
   );
 }
 
+// A ghaseet leg: a square post the bar's own weight, hanging below it.
+const GH_LEG_SVG = (side: 'l' | 'r') =>
+  `<svg class="sl-mk sl-mk-g${side}" viewBox="0 0 1 1" preserveAspectRatio="none" aria-hidden="true"><rect width="1" height="1"/></svg>`;
+
+/**
+ * Ghaseet mark zone: the meend bar with a square leg at each closed end. It
+ * shares the meend zone's frame, so a ghaseet, the `w` continuations inside
+ * it and the bridges joining them draw one stroke. The brackets used to be
+ * bordered boxes, and print snaps a border to whole pixels while it draws
+ * SVG exactly — one glide printed at two weights.
+ */
+function ghaseetZone(left: boolean, right: boolean): string {
+  return (
+    '<i class="sl-mz sl-mz-g">' +
+    (left ? GH_LEG_SVG('l') : '') +
+    MK_SVG('sl-mk-b', MK_W_PATH) +
+    (right ? GH_LEG_SVG('r') : '') +
+    '</i>'
+  );
+}
+
 type FragKind =
   | 'start'
   | 'cont'
@@ -566,11 +587,10 @@ const FRAG_SVG: Record<FragKind, string> = {
   start: meendZone(true, false),
   cont: meendZone(false, false),
   end: meendZone(false, true),
-  // Ghaseet pieces: square bracket sides via bordered elements.
-  gstart: '<i class="sl-mbr sl-open-r"></i>',
-  gend: '<i class="sl-mbr sl-open-l"></i>',
+  gstart: ghaseetZone(true, false),
+  gend: ghaseetZone(false, true),
   full: meendZone(true, true),
-  ghaseet: '<i class="sl-mbr"></i>',
+  ghaseet: ghaseetZone(true, true),
 };
 
 function fragWrap(html: string, kind: FragKind): string {

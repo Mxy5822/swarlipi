@@ -164,7 +164,7 @@ the inner svg that draws the band. Put `data-sl-bar` on the element yourself.
 
 ### `BRIDGE_ZONE_SELECTOR`, `BRIDGE_OVERLAP`
 
-The fragment selector (`.sl-mz, .sl-mbr`), useful for deciding whether a DOM
+The fragment selector (`.sl-mz`), useful for deciding whether a DOM
 mutation needs a re-measure, and the fraction of a zone's height each bar
 runs into its zones so the junctions print seamless. A test keeps the
 stylesheet's anchor rules on the same value.

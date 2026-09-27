@@ -200,8 +200,20 @@ describe('renderSwarlipi — meend and ghaseet', () => {
 
   it('renders ghaseet Q..E as the square bracket', () => {
     const html = renderSwarlipi('QsrE', 'punjabi');
-    expect(html).toContain('sl-mbr');
+    expect(html).toContain('sl-mz-g');
+    expect(html).toContain('sl-mk-gl');
+    expect(html).toContain('sl-mk-gr');
     expect(html).not.toContain('sl-mk-l');
+  });
+
+  it('draws ghaseet in SVG like meend, never as bordered boxes', () => {
+    // Print snaps a border to whole pixels but draws SVG exactly, so a
+    // bordered bracket and the SVG `w` bar inside it printed at two weights.
+    for (const notes of ['QswrE', 'Qs', 'Ep']) {
+      const html = renderSwarlipi(notes, 'punjabi');
+      expect(html).not.toContain('sl-mbr');
+      expect(html).toContain('<i class="sl-mz sl-mz-g">');
+    }
   });
 
   it('anchors an empty-interior pair to its neighbouring notes', () => {
@@ -372,10 +384,12 @@ describe('renderSwarlipi — meend and ghaseet', () => {
 
   it('renders ghaseet cross-beat fragments as square pieces, not hooks', () => {
     const start = renderSwarlipi('Qs', 'punjabi');
-    expect(start).toContain('sl-mbr sl-open-r');
+    expect(start).toContain('sl-mk-gl');
+    expect(start).not.toContain('sl-mk-gr');
     expect(start).not.toContain('sl-mk-l');
     const end = renderSwarlipi('Er', 'punjabi');
-    expect(end).toContain('sl-mbr sl-open-l');
+    expect(end).toContain('sl-mk-gr');
+    expect(end).not.toContain('sl-mk-gl');
   });
 
   it('renders a continuation piece beside a dash (glide across a sustain)', () => {

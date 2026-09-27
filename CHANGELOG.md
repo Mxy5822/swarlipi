@@ -6,7 +6,20 @@ API, so a change to either that breaks a consumer's CSS is a breaking change.
 
 ## Unreleased
 
+### Breaking
+
+- Ghaseet draws in SVG like meend, not as bordered boxes: a `.sl-mz sl-mz-g`
+  zone holding the meend bar with square `.sl-mk-gl` / `.sl-mk-gr` legs at its
+  closed ends. Print snaps a border to whole pixels but draws SVG exactly, so
+  the old bracket and the `w` bar inside it printed at two weights. The
+  `.sl-mbr`, `.sl-open-l` and `.sl-open-r` classes are gone, and
+  `BRIDGE_ZONE_SELECTOR` is now just `.sl-mz`. CSS aimed at `.sl-mbr` should
+  target `.sl-mz-g` instead.
+
 ### Changed
+
+- A meend bar tucks 0.09em under each hook instead of 0.04em, so print's pixel
+  snapping no longer opens a hairline seam where the bar meets a hook.
 
 - The source is public: [github.com/BeeJaySoft/swarlipi](https://github.com/BeeJaySoft/swarlipi)
   mirrors the package directory of the monorepo it is developed in, and is

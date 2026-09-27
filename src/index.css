@@ -26,8 +26,8 @@
   /* The glide's stroke weight, DERIVED rather than hand-computed: the mark
      zone's height times the fraction of it MK_W_PATH's bar fills. The ratio
      mirrors MEEND_BAR_RATIO in index.ts (a test there fails if the two
-     drift). The ghaseet bracket's border resolves to the same weight, so one
-     span never mixes two, and its bridge measures that border. */
+     drift). A ghaseet draws the same bar, so one span never mixes two
+     weights. */
   --sl-mz-h: 0.34em;
   --sl-bar-ratio: 0.375;
   --sl-bar: calc(var(--sl-mz-h) * var(--sl-bar-ratio));
@@ -452,36 +452,33 @@
   left: 0;
   width: 100%;
 }
+/* The bar tucks 0.09em under each 0.38em hook. Print snaps every svg to
+   whole pixels, and the old 0.04em tuck could snap to nothing, leaving a
+   hairline seam at the hook. 0.29em is as far as the bar can reach before
+   its flat top shows above the hook's curling top edge. */
 .sl-wrap .sl-mk-b.sl-has-l {
-  left: 0.34em;
-  width: calc(100% - 0.34em);
+  left: 0.29em;
+  width: calc(100% - 0.29em);
 }
 .sl-wrap .sl-mk-b.sl-has-r {
-  width: calc(100% - 0.34em);
+  width: calc(100% - 0.29em);
 }
 .sl-wrap .sl-mk-b.sl-has-l.sl-has-r {
-  width: calc(100% - 0.68em);
+  width: calc(100% - 0.58em);
 }
-/* Ghaseet: square bracket; -open variants are the cross-beat pieces with
-   the missing side left open. */
-.sl-wrap .sl-mbr {
-  position: absolute;
-  left: 2%;
-  right: 2%;
-  /* Legs measured from the bar's underside, so a heavier --sl-bar thickens the
-     stroke without eating into them (box-sizing is border-box app-wide). */
+/* Ghaseet legs: square posts the bar's own weight, hanging --sl-mbr-leg
+   below it at the zone's closed ends. SVG like every other meend piece, so
+   print draws them at the same exact weight as the bar and its bridges. */
+.sl-wrap .sl-mk-gl,
+.sl-wrap .sl-mk-gr {
+  width: var(--sl-bar);
   height: calc(var(--sl-mbr-leg) + var(--sl-bar));
-  top: var(--sl-mbr-top);
-  border: var(--sl-bar) solid currentColor;
-  border-bottom: none;
 }
-.sl-wrap .sl-mbr.sl-open-r {
-  border-right: none;
-  right: -2%;
+.sl-wrap .sl-mk-gl {
+  left: 0;
 }
-.sl-wrap .sl-mbr.sl-open-l {
-  border-left: none;
-  left: -2%;
+.sl-wrap .sl-mk-gr {
+  right: 0;
 }
 .sl-wrap .sl-bol {
   position: relative;
