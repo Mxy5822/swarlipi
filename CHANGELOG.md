@@ -6,6 +6,8 @@ API, so a change to either that breaks a consumer's CSS is a breaking change.
 
 ## Unreleased
 
+## 0.3.0
+
 ### Breaking
 
 - Ghaseet draws in SVG like meend, not as bordered boxes: a `.sl-mz sl-mz-g`

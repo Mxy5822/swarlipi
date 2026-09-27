@@ -1,6 +1,6 @@
 {
   "name": "swarlipi",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "private": false,
   "description": "Bhatkhande (Hindustani classical) music notation as real Unicode text, in Gurmukhi, Devanagari, Bengali, Gujarati and Latin — every mark drawn by CSS and SVG, no notation font.",
   "license": "MIT AND OFL-1.1",
